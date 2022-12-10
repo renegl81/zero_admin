@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 export const useLayoutStore = defineStore('layout', {
   state: () => ({
     isAsideMobileExpanded: false,
-    isAsideLgActive: false
+    isAsideLgActive: false,
+    menuItems: []
   }),
 
   actions: {
@@ -13,6 +14,10 @@ export const useLayoutStore = defineStore('layout', {
 
     asideLgToggle (payload = null) {
       this.isAsideLgActive = payload !== null ? payload : !this.isAsideLgActive
-    }
+    },
+
+    setMenuItems(payload = null) {
+        this.menuItems = payload !== null ? payload : []
+    },
   }
 })

@@ -52,6 +52,10 @@ class HandleInertiaRequests extends Middleware
                 ];
             },
             'user' => $user ? new UserResource($user) : null,
+            'zero' => [
+                'routePrefix' => config('url').'/'.config('zero.route_prefix'),
+                'appUrl' => config('url')
+            ]
         ]);
     }
 }

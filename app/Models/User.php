@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Zero\Models\ZeroBaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,9 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use ZeroBaseModel;
 
+   public bool $addedToMenu = true;
     /**
      * The attributes that are mass assignable.
      *
@@ -32,6 +35,11 @@ class User extends Authenticatable
 
     ];
 
+    public $menu = [
+        "to" => 'users',
+        "icon"  => 'account',
+        "label" => 'Users'
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -61,6 +69,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
 
     public function roles(): BelongsToMany
     {

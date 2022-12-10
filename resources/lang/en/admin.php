@@ -99,6 +99,9 @@ return [
                 'tag' => 'Tag updated successfully',
                 'user' => 'Account updated successfully',
             ],
+            'profile' => [
+                'editedSuccess' => 'Profile updated successfully'
+            ],
             'error' => [
 
             ],

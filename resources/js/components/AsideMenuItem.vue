@@ -5,6 +5,8 @@ import { mdiMinus, mdiPlus } from '@mdi/js'
 import BaseIcon from '@/components/BaseIcon.vue'
 import AsideMenuList from '@/components/AsideMenuList.vue'
 import { Link } from '@inertiajs/inertia-vue3'
+import SimpleIcon from "@/components/SimpleIcon.vue";
+import { usePage } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
   item: {
@@ -20,7 +22,7 @@ const styleStore = useStyleStore()
 
 const isDropdownActive = ref(false)
 
-const hasDropdown = computed(() => !!props.item.menu)
+const hasDropdown = computed(() => !!props.item.hasDropdown)
 
 const menuClick = event => {
   emit('menu-click', event, props.item)
@@ -36,16 +38,16 @@ const menuClick = event => {
     <component
       :is="item.to ? Link : 'a'"
       v-slot="vSlot"
-      :to="item.to || null"
-      :href="item.to || null"
+      :to="item.to ? usePage().props.value.zero.routePrefix + '/'+item.to : null"
+      :href="item.to ? usePage().props.value.zero.routePrefix + '/'+item.to : null"
       :target="item.target || null"
       class="flex cursor-pointer dark:hover:bg-gray-700/50"
       :class="[ styleStore.asideMenuItemStyle, isSubmenuList ? 'p-3 text-sm' : 'py-2' ]"
       @click="menuClick"
     >
-      <BaseIcon
+      <SimpleIcon
         v-if="item.icon"
-        :path="item.icon"
+        :icon="item.icon"
         class="flex-none"
         :class="[ vSlot && vSlot.isExactActive ? styleStore.asideMenuItemActiveStyle : styleStore.asideMenuItemInactiveStyle ]"
         w="w-12"

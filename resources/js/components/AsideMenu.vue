@@ -6,12 +6,14 @@ import AsideMenuList from '@/components/AsideMenuList.vue'
 import NavBarItem from '@/components/NavBarItem.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
 
+
 defineProps({
   menu: {
     type: Array,
     default: () => []
   }
 })
+
 
 const styleStore = useStyleStore()
 
@@ -46,7 +48,7 @@ const menuClick = () => {
         />
       </NavBarItem>
       <div class="flex-1 px-3">
-        <img src="/images/logo.png">
+        <img src="/images/logo.png" alt="logo">
       </div>
     </div>
     <div>

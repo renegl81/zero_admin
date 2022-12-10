@@ -1,5 +1,5 @@
 <script setup>
-import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';
+import ApiTokenManager from '@/Pages/Admin/API/Partials/ApiTokenManager.vue';
 import LayoutGuest from '@/Layouts/LayoutGuest.vue'
 
 defineProps({

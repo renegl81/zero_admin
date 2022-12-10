@@ -29,6 +29,7 @@ import UserAvatarCurrentUser from '@/components/UserAvatarCurrentUser.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
 import NavBarSearch from '@/components/NavBarSearch.vue'
 
+
 const mainStore = useMainStore()
 
 const userName = computed(() => mainStore.userName)
@@ -109,51 +110,13 @@ const logout = () => {
       <div
         class="max-h-screen-menu overflow-y-auto lg:overflow-visible lg:flex lg:items-stretch lg:justify-end lg:ml-auto"
       >
-          <!--   <NavBarItem
-            class="lg:hidden"
-            target="_blank"
-            href="https://tailwind-vue.justboil.me/"
-          >
-            <NavBarItemLabel
-              :icon="mdiMonitorShimmer"
-              label="Premium version"
-            />
-          </NavBarItem>
-       <NavBarMenu has-divider>
-            <NavBarItemLabel
-              :icon="mdiMenu"
-              label="Sample menu"
-            />
-
-            <template #dropdown>
-              <NavBarItem>
-                <NavBarItemLabel
-                  :icon="mdiClockOutline"
-                  label="Item One"
-                />
-              </NavBarItem>
-              <NavBarItem>
-                <NavBarItemLabel
-                  :icon="mdiCloud"
-                  label="Item Two"
-                />
-              </NavBarItem>
-              <BaseDivider nav-bar />
-              <NavBarItem>
-                <NavBarItemLabel
-                  :icon="mdiCrop"
-                  label="Item Last"
-                />
-              </NavBarItem>
-            </template>
-          </NavBarMenu>-->
         <NavBarMenu has-divider>
           <NavBarItemLabel :label="userName">
             <UserAvatarCurrentUser class="w-6 h-6 mr-3 inline-flex" />
           </NavBarItemLabel>
 
           <template #dropdown>
-            <NavBarItem to="/profile">
+            <NavBarItem to="profile">
               <NavBarItemLabel
                 :icon="mdiAccount"
                 label="My Profile"
@@ -172,7 +135,7 @@ const logout = () => {
               />
             </NavBarItem>
             <BaseDivider nav-bar />
-            <NavBarItem to="/logout" isButton="true">
+            <NavBarItem to="logout" isButton="true">
               <NavBarItemLabel
                 :icon="mdiLogout"
                 label="Log Out"

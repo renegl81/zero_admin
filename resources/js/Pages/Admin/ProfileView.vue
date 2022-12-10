@@ -13,14 +13,16 @@ import BaseButton from '@/components/BaseButton.vue'
 import BaseButtons from '@/components/BaseButtons.vue'
 import UserCard from '@/components/UserCard.vue'
 import LayoutAuthenticated from '@/Layouts/LayoutAuthenticated.vue'
+import { usePage } from '@inertiajs/inertia-vue3'
+import {Inertia} from "@inertiajs/inertia";
 
 const mainStore = useMainStore()
 
 const titleStack = ref(['Admin', 'Profile'])
 
 const profileForm = reactive({
-  name: mainStore.userName,
-  email: mainStore.userEmail
+  name: usePage().props.value.user.data.name,
+  email: usePage().props.value.user.data.email
 })
 
 const passwordForm = reactive({
@@ -32,6 +34,10 @@ const passwordForm = reactive({
 const submitProfile = () => {
   mainStore.setUser(profileForm)
 }
+
+const onSubmit = async () => {
+    return Inertia.post(route('profile_edit'),  profileForm);
+};
 
 const submitPass = () => {
   //
@@ -52,6 +58,7 @@ const submitPass = () => {
           form
           @submit.prevent="submitProfile"
         >
+            <form @submit.prevent="onSubmit">
           <FormField
             label="Avatar"
             help="Max 500kb"
@@ -92,13 +99,15 @@ const submitPass = () => {
               color="info"
               type="submit"
               label="Submit"
+              @click="onSubmit"
             />
-            <BaseButton
+          <!--  <BaseButton
               color="info"
               label="Options"
               outline
-            />
+            />-->
           </BaseButtons>
+            </form>
         </CardBox>
 
         <CardBox
