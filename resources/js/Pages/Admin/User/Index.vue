@@ -7,6 +7,7 @@ import CardBox from '@/components/CardBox.vue'
 import SectionHeroBar from '@/components/SectionHeroBar.vue'
 import SectionTitleBarSub from '@/components/SectionTitleBarSub.vue'
 import LayoutAuthenticated from '@/Layouts/LayoutAuthenticated.vue'
+import { Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from "@inertiajs/inertia";
 const titleStack = ref(['Admin', 'Users'])
 const props = defineProps({
@@ -59,9 +60,9 @@ const handleCurrentPageChange = val =>{
 
                     <el-table-column fixed="right" label="Actions" width="260px">
                         <template #default="scope">
-                            <el-button @click="handleEdit(scope.$index, scope.row)">
+                            <Link :href="route('users.edit',[{'id': scope.row.id}])"><el-button>
                                 Edit
-                            </el-button>
+                            </el-button></Link>
                         </template>
                     </el-table-column>
                 </el-table>

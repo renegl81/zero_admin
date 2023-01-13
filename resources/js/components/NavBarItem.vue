@@ -82,7 +82,7 @@ const componentClass = computed(() => {
 </script>
 
 <template>
-    <Link :class="componentClass" :href="usePage().props.value.zero.routePrefix + '/' + to" method="post" as="buttom" v-if="isButton">
+    <Link :class="componentClass" :href="'/' + to" method="post" as="buttom" type="buttom" v-if="isButton">
        <slot/>
     </Link>
   <component v-else

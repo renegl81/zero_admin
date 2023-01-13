@@ -4,10 +4,10 @@ import {usePage} from "@inertiajs/inertia-vue3";
 
 
 const avatar = computed(
-  () => usePage().props.value.user.data.picture ?? ''
+  () => usePage().props.value.user.picture ?? ''
 )
 
-const username = computed(() => usePage().props.value.user.data.name)
+const username = computed(() => usePage().props.value.user.name)
 </script>
 
 <template>
