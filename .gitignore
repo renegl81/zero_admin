@@ -2,7 +2,10 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+yarn.lock
 
+docker/mysql-data
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
